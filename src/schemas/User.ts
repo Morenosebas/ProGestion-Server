@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 import moongooseLocal from "passport-local-mongoose";
 const Schema = new mongoose.Schema({
-  name: String,
+  name: { type: String, require: true },
   cc: { type: Number, require: true, unique: true },
   username: { type: String, require: true, unique: true },
   type: { type: String, require: true, enum: ["Super", "Admin", "Staff"] },
-  company: { type: String },
+  company: { type: String, default: null },
   password: String,
   permissions: {
     order_assortment: { type: Boolean, default: false },
@@ -23,9 +23,6 @@ const Schema = new mongoose.Schema({
   },
 });
 
-Schema.plugin(moongooseLocal, {
-  usernameField: "username",
-  passwordField: "password",
-});
+Schema.plugin(moongooseLocal);
 
-export const User = mongoose.models.User || mongoose.model("User", Schema);
+export const User = mongoose.model("User", Schema);

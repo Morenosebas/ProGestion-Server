@@ -1,5 +1,6 @@
-// requires the model with Passport-Local Mongoose plugged in
-import { User } from "../../schemas/User.ts";
+import passport from "passport";
+import { Strategy as LocalStrategy } from "passport-local";
+import { User } from "../../schemas/User";
 // use static authenticate method of model in LocalStrategy
 passport.use(new LocalStrategy(User.authenticate()));
 
