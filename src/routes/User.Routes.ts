@@ -27,7 +27,7 @@ router
           username: req.body.username,
           email: req.body.email,
           cc: req.body.cc,
-          type: "Super",
+          type: req.body.type,
         }),
         req.body.password
       );

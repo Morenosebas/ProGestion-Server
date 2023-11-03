@@ -1,4 +1,5 @@
-import express, { Request, Response, NextFunction } from "express";
+import express from "express";
+import type { Request, Response, NextFunction } from "express";
 import http from "http";
 import dotenv from "dotenv";
 import uuid from "node-uuid";
@@ -6,7 +7,7 @@ import morgan from "morgan";
 import passport from "passport";
 import session from "express-session";
 const sockets = require("socket.io");
-import { socket } from "./sockets/sockets.config";
+import { socket } from "@sockets/sockets.config";
 //configuración variables de entorno
 dotenv.config();
 //conexión a base de datos
@@ -49,7 +50,8 @@ app.use((req: any, res: Response, next: NextFunction) => {
   next();
 });
 //rutas
-app.use("/api", require("./routes/User.Routes"));
+app.use("/api/v1", require("./routes/User.Routes"));
+app.use("/api/v1/company", require("./routes/Company.Routes"));
 app.get("/", (req: Request, res: Response) => {
   res.send("Server ProGestion v1");
 });

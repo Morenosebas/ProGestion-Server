@@ -6,8 +6,8 @@ const Schema = new mongoose.Schema({
   price: { type: Number, required: true },
   stock: { type: Number, default: 0 },
   category: { type: mongoose.Schema.ObjectId, ref: "Category" },
-  supplier: { type: mongoose.Schema.ObjectId, ref: "Supplier" },
-  company: {
+  // supplier: { type: mongoose.Schema.ObjectId, ref: "Supplier" },
+  supplier: {
     type: mongoose.Schema.ObjectId,
     ref: "Company",
   },
@@ -15,6 +15,7 @@ const Schema = new mongoose.Schema({
     type: mongoose.Schema.Types,
     ref: "User",
   },
+
   // Otros campos relevantes a los productos como imágenes, detalles técnicos, etc.
 });
 

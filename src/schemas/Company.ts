@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
 const Schema = new mongoose.Schema({
-  name: { type: String, required: true },
+  name: { type: String, required: true, unique: true },
   boss: { type: mongoose.Schema.ObjectId, ref: "User", required: true },
-  dir: { type: String, required: true },
+  address: { type: String, required: true },
   clients: [
     {
       type: mongoose.Schema.ObjectId,
@@ -28,7 +28,7 @@ const Schema = new mongoose.Schema({
       ref: "Product",
     },
   ],
-  Financial: [
+  financial: [
     {
       type: mongoose.Schema.ObjectId,
       ref: "Financial",
@@ -44,5 +44,6 @@ Schema.index({
   name: 1,
   boss: 1,
 });
+const company = mongoose.model("Company", Schema) || mongoose.models.Company;
 
-export const model = mongoose.model("Company", Schema);
+export default company;

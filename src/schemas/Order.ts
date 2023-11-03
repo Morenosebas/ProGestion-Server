@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema({
-  customer: { type: mongoose.Schema.ObjectId, ref: "Customer", required: true },
+  customer: { type: mongoose.Schema.ObjectId, ref: "User", required: true },
   products: [
     {
       product: {
@@ -18,7 +18,7 @@ const orderSchema = new mongoose.Schema({
     enum: ["Pending", "Shipped", "Delivered"],
     default: "Pending",
   },
-  orderDate: { type: Date, default: Date.now },
+  orderDate: { type: Date, default: new Date() },
   // Otros campos relacionados con el pedido, como dirección de envío, método de pago, etc.
 });
 

@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec ts-node src/Server.ts",
     "build": "tsc",
-    "lint": "ts-standard"
+    "lint": "ts-standard",
+    "bun-dev": "bun  src/Server.ts"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "nodemon": "^3.0.1",
     "ts-node": "^10.9.1",
     "ts-standard": "^12.0.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.1.6"
   },
   "dependencies": {

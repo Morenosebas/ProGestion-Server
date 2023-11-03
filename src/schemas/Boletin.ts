@@ -1,15 +1,15 @@
 import mongoose from "mongoose";
 
-const reportSchema = new mongoose.Schema({
+const boletinSchema = new mongoose.Schema({
   type: { type: String, required: true }, // Puede ser "Sales", "Income", "Expenses", etc.
-  fromDate: Date,
-  toDate: Date,
+  fromDate: { type: Date, default: new Date() },
+  toDate: { type: Date, default: new Date() },
   generatedBy: { type: mongoose.Schema.ObjectId, ref: "User", required: true }, // Usuario que generó el informe
   company: {
-    type:mongoose.Schema.ObjectId,
-    
+    type: mongoose.Schema.ObjectId,
+    ref: "Company",
   },
   // Otros campos relevantes para los informes.
 });
 
-export const Report = mongoose.model("Report", reportSchema);
+export const Boletin = mongoose.model("Boletin", boletinSchema);
